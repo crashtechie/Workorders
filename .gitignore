@@ -1,0 +1,84 @@
+# ------------------------------
+# OS / editor noise
+# ------------------------------
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ------------------------------
+# Python
+# ------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.nox/
+.coverage
+.coverage.*
+htmlcov/
+.venv/
+venv/
+env/
+.python-version
+
+# ------------------------------
+# Node / frontend
+# ------------------------------
+node_modules/
+.npm/
+.pnpm-store/
+.yarn/
+.parcel-cache/
+.next/
+.nuxt/
+.svelte-kit/
+coverage/
+
+# Build outputs
+build/
+dist/
+
+# ------------------------------
+# Logs and runtime artifacts
+# ------------------------------
+*.log
+*.pid
+*.seed
+*.tmp
+tmp/
+
+# ------------------------------
+# Docker / containers
+# ------------------------------
+*.tar
+*.tgz
+
+# ------------------------------
+# Environment and secrets
+# ------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+*.p12
+*.jks
+*.kubeconfig
+*.ovpn
+secrets/
+
+# ------------------------------
+# Local databases / state
+# ------------------------------
+*.sqlite
+*.sqlite3
+*.db
