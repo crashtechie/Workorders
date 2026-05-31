@@ -4,6 +4,21 @@ All notable changes to this project will be documented in this file.
 
 The format is based on Keep a Changelog, and this project follows Semantic Versioning.
 
+## [Unreleased]
+
+### Added
+
+- Django project scaffold under `backend/config/` with `manage.py` for administrative commands.
+- Backend development documentation set under `backend/docs/development/`.
+- Planning documentation for backend, frontend, and shared architecture under `docs/Planning/`.
+- Shared ADR/wiki entries under `docs/wiki/shared/` for architecture, authorization, domain, taxonomy, and integration decisions.
+
+### Changed
+
+- Backend runtime baseline moved from FastAPI health endpoint implementation to a Django-based health check stub in `backend/main.py`.
+- Backend Python dependencies now align to Django/DRF stack (`django`, `djangorestframework`, `psycopg2-binary`, `djangorestframework-simplejwt`) with lockfile updates.
+- Docker compose backend service command and exposed ports were updated to support current backend development flow.
+
 ## [0.1.0] - 2026-05-27
 
 ### Added

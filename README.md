@@ -4,23 +4,27 @@ Workorders is a container-first foundation for a work order management applicati
 
 Current release: `0.1.0`
 
+Development branch status: post-`0.1.0` backend bootstrap and documentation expansion in progress.
+
 Owner: Daniel Smith
 GitHub: [Crashtechie](https://github.com/Crashtechie)
 
 ## Project Status
 
-Version `0.1.0` is an initial platform release focused on infrastructure and health checks:
+Version `0.1.0` is the latest baseline release. Current `develop` branch work extends that baseline:
 
-- Backend service running with FastAPI.
+- Backend service now bootstrapped on Django, with a minimal `/health` endpoint in `backend/main.py` for container readiness.
+- Django project skeleton added with `backend/manage.py` and `backend/config/`.
 - Frontend served by Nginx using a multi-stage Node to Nginx Docker build.
 - Docker health checks configured for backend and frontend containers.
 - Repository-level and service-level `.dockerignore` and `.gitignore` hygiene in place.
+- Planning and shared architecture/ADR documentation expanded under `docs/Planning/` and `docs/wiki/shared/`.
 
 ## Architecture
 
 The repository is split into two deployable services:
 
-- `backend/`: Python FastAPI service exposing `GET /health` on port `8080`.
+- `backend/`: Python Django bootstrap service exposing `GET /health` on port `8080`.
 - `frontend/`: Nginx static web service exposing a health endpoint at `GET /healthz` on port `80`.
 
 Frontend build behavior:
@@ -34,12 +38,16 @@ Frontend build behavior:
 ```text
 Workorders/
   backend/
+    config/
     Dockerfile
     main.py
+    manage.py
     pyproject.toml
     requirements.txt
   docs/
     README.md
+    Planning/
+    wiki/
   frontend/
     Dockerfile
     nginx.conf
@@ -55,11 +63,13 @@ Project documentation is organized under the `docs/` directory.
 - Backend service details: `backend/README.md`
 - Frontend service details: `frontend/README.md`
 - Repository baseline for release `0.1.0`: `docs/wiki/shared/repository-baseline-0.1.0.md`
+- Planning index: `docs/Planning/shared/planning-index.md`
+- Shared ADR references: `docs/wiki/shared/`
 - Includes issue tracking docs, logs, planning notes, templates, and wiki content split by backend, frontend, and shared scope.
 
 ## Tech Stack
 
-- Backend: Python, FastAPI, Uvicorn
+- Backend: Python, Django, Django REST Framework
 - Frontend runtime: Nginx (Alpine)
 - Frontend build stage: Node.js 20 (Alpine)
 - Container tooling: Docker Buildx
