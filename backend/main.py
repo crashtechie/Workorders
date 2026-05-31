@@ -1,12 +1,33 @@
-# This is a simple script to run that provides a basic health check endpoint for the backend docker container to ensure that the container is running and responsive with a status code of 200. It uses FastAPI to create a web server that listens on port 8080 and responds to GET requests at the /health endpoint with a JSON message indicating that the container is healthy but does not indicate the django server is running or healthy.
-import uvicorn
-from fastapi import FastAPI
+# Minimal Django health check stub for container readiness.
+# This satisfies the Docker HEALTHCHECK before the full Django project
+# is scaffolded. Runs Django's development server on port 8080.
+# Not for production use — replace with gunicorn + full project entrypoint.
+import os
+import django
+from django.conf import settings
 
-app = FastAPI()
+if not settings.configured:
+    settings.configure(
+        DEBUG=True,
+        ALLOWED_HOSTS=["*"],
+        ROOT_URLCONF=__name__,
+        SECRET_KEY=os.environ.get("DJANGO_SECRET_KEY", "placeholder-change-before-production"),
+    )
 
-@app.get("/health")
-def health_check():
-    return {"status": "healthy"}
+django.setup()
+
+from django.http import JsonResponse  # noqa: E402
+from django.urls import path  # noqa: E402
+
+
+def health_check(request):
+    return JsonResponse({"status": "healthy"})
+
+
+urlpatterns = [
+    path("health", health_check),
+]
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8080)
+    from django.core.management import execute_from_command_line
+    execute_from_command_line(["manage.py", "runserver", "0.0.0.0:8080", "--noreload"])

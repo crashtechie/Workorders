@@ -6,7 +6,7 @@ This document records the repository baseline for version `0.1.0` and serves as 
 
 Version `0.1.0` establishes the initial container-ready application skeleton:
 
-- Backend FastAPI service with `GET /health`.
+- Backend Django service placeholder with `GET /health` (FastAPI stub; superseded by Django in active development — see ADR-008).
 - Frontend Nginx service with `GET /healthz`.
 - Multi-stage frontend container build.
 - Repository and service ignore files for generated artifacts.

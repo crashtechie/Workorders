@@ -12,8 +12,8 @@ services:
       timeout: 10s
       retries: 3
     depends_on:
-      - api
-  api:
+      - backend
+  backend:
     image: workorders-backend:latest
     ports:
       - "5000:5000"
@@ -23,7 +23,7 @@ services:
       - ./backend:/app
     command: uv run python main.py --host 0.0.0.0 --port  8080 --reload
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
       interval: 30s
       timeout: 10s
       retries: 3

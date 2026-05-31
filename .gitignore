@@ -82,3 +82,21 @@ secrets/
 *.sqlite
 *.sqlite3
 *.db
+
+# ------------------------------
+# Misc
+# ------------------------------
+*.bak
+*.backup
+*.orig
+*.rej
+*.zip
+*.tar.gz
+*.7z
+*.iso
+*.log
+*.csv
+*.xlsx
+*.pdf
+*.docx
+*.pptx

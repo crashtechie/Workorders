@@ -1,2 +1,4 @@
-fastapi
-uvicorn
+django
+djangorestframework
+psycopg2-binary
+djangorestframework-simplejwt
