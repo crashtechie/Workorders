@@ -7,8 +7,8 @@ This service provides the backend container baseline for Workorders. The current
 ## Current Behavior
 
 - Framework: Django
-- Bootstrap entrypoint: `main.py`
-- Container runtime command: `python main.py`
+- Bootstrap entrypoint: `manage.py`
+- Container runtime command: `python manage.py runserver 0.0.0.0:8080 --noreload`
 - Listening port: `8080`
 - Health endpoint: `GET /health`
 - Django administrative entrypoint: `manage.py`
@@ -49,7 +49,6 @@ python manage.py runserver 0.0.0.0:8080
 
 ## Key Files
 
-- `main.py`: minimal Django health-check stub used by container runtime.
 - `manage.py`: Django administrative command entrypoint.
 - `config/settings.py`: Django project settings scaffold.
 - `config/urls.py`: URL routing scaffold.

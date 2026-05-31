@@ -24,4 +24,4 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=20s --retries=3 \
     CMD python -c "import sys,urllib.request; sys.exit(0) if urllib.request.urlopen('http://127.0.0.1:8080/health', timeout=3).getcode()==200 else sys.exit(1)" || exit 1
 
 # Container should run with no app configured and will be configured at runtime by the entrypoint script
-CMD ["python", "main.py"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8080", "--noreload"]
