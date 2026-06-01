@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 from dotenv import load_dotenv
 
@@ -38,7 +39,8 @@ def get_bool(key, default=False):
 # APPLICATION ENVIRONMENT CONFIGURATION
 # ============================================
 APP_ENV = get_env('APP_ENV', 'development')
-DEBUG = APP_ENV in ('development', 'test')
+IS_TEST_RUN = 'test' in sys.argv
+DEBUG = APP_ENV in ('development', 'test') or IS_TEST_RUN
 
 if APP_ENV == 'production':
     ALLOWED_HOSTS = get_env('ALLOWED_HOSTS', '').split(',')
