@@ -100,3 +100,5 @@ secrets/
 *.pdf
 *.docx
 *.pptx
+
+!.env.example
